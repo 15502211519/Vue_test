@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      li {
+        list-style: none;
+        display: inline-block;
+        padding: 10px 30px;
+        margin: 0;
+        background-color: #d8d8d8;
+      }
+      li.active {
+        background-color: orange;
+      }
+      .cont {
+        height: 300px;
+        width: 300px;
+        border: 1px solid #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(item, index) in tabs" @click="ind = index" :class="ind == index ? 'active' : '' ">{{item}}</li>
+      </ul>
+      <div class="cont" v-for="(item, index) in tabs" v-show="ind == index">{{item + "的内容"}}</div>
+    </div>
+  </body>
+  <script>
+    new Vue({
+      el: '#app', //占地盘
+      data: {
+        tabs: ['首页', '产品', '新闻', '关于', '招聘'],
+        ind: 0
+      }
+    });
+  </script>
+</html>
